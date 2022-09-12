@@ -43,3 +43,17 @@ $ cd client
 $ yarn install
 $ yarn start
 ```
+
+## Running app using docker compose locally
+
+If you have the docker engine installed you should be able to run the movies app using below command,
+```
+$ docker compose up -d
+```
+
+Verify that the docker containers are up using below command,
+```
+$ docker ps
+```
+
+If everything is looking good then you will be able to access the Movies app on this URL : http://localhost:8000
