@@ -9,7 +9,8 @@ services:
         condition: service_healthy
   frontend-client:
     build: ./client
-    network_mode: "host"
+    ports:
+      - "3000:3000"
     networks:
       - backend-network
   mongo:
@@ -19,11 +20,18 @@ services:
     networks:
       - db-network
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
+      test:
+      - CMD
+      - mongosh
+      - --eval
+      - "db.adminCommand('ping')"
       interval: 10s
       timeout: 10s
-      retries: 5
-      start_period: 40s
+      retries: 3
+      start_period: 20s
+    environment:
+      - PUID=1000
+      - PGID=1000
 
 volumes:
   mongodb:
