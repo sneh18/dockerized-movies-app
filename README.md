@@ -56,4 +56,6 @@ Verify that the docker containers are up using below command,
 $ docker ps
 ```
 
+Note : Use ```sudo```, if required to run above two commands.
+
 If everything is looking good then you will be able to access the Movies app on this URL : http://localhost:8000
