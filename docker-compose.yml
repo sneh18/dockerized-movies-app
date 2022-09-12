@@ -10,8 +10,6 @@ services:
     build: ./client
     ports:
       - "8000:8000"
-    networks:
-      - backend-network
   mongo:
     image: mongo:latest
     volumes:
