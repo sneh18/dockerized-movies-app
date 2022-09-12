@@ -1,9 +1,8 @@
 services:
   backend-server:
     build: ./server
-    networks:
-      - backend-network
-      - db-network
+    ports:
+      - "3000:3000"
     depends_on:
       mongo:
         condition: service_healthy
@@ -17,8 +16,8 @@ services:
     image: mongo:latest
     volumes:
       - mongodb:/data/db
-    networks:
-      - db-network
+    ports:
+      - "27017:27017"
     healthcheck:
       test:
       - CMD
@@ -35,7 +34,3 @@ services:
 
 volumes:
   mongodb:
-
-networks:
-  backend-network:
-  db-network:
